@@ -1,0 +1,28 @@
+ville_index:
+    path:     /
+    defaults: { _controller: "AppBundle:BackOffice/Ville:index" }
+    methods:  GET
+
+ville_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:BackOffice/Ville:show" }
+    methods:  GET
+
+ville_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:BackOffice/Ville:new" }
+    methods:  [GET, POST]
+
+ville_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:BackOffice/Ville:edit" }
+    methods:  [GET, POST]
+
+ville_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:BackOffice/Ville:delete" }
+    methods:  DELETE
+ville_chercher:
+    path:     /recherche
+    defaults: { _controller: "AppBundle:BackOffice/Ville:recherche" }
+    methods:  GET

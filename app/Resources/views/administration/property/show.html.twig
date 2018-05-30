@@ -1,0 +1,105 @@
+{% extends 'administration/base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Gestion des biens
+                <small>preview of simple tables</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Tables</a></li>
+                <li class="active">Simple</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Liste des biens</h3>
+                        </div>
+                        <h1>Property</h1>
+                        <div class="box-body">
+                            <table class="table table-hover">
+
+                                <img src="{{ asset(property.image.webPath) }}" height="200"
+                                     alt="{{ property.image.alt }}">
+
+                                <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ property.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Title</th>
+                                    <td>{{ property.title }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Price</th>
+                                    <td>{{ property.price }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ property.description }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Roomnumber</th>
+                                    <td>{{ property.roomNumber }}</td>
+                                </tr>
+
+
+                                <tr>
+                                    <th>Surface</th>
+                                    <td>{{ property.surface }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Activate</th>
+                                    <td>{% if property.activate %}Yes{% else %}No{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Operation</th>
+                                    <td>{{ property.operation|default('') }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Createdat</th>
+                                    <td>{{ property.createdAt|date("d-m-Y") }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    {% for photo in property.photos %}
+                                        <div class="col-lg-3">
+                                            <img src="{{ asset(photo.webPath) }}" class="img-responsive">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <ul>
+                                <li>
+                                    <a href="{{ path('property_index') }}">Back to the list</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('property_edit', { 'id': property.id }) }}">Edit</a>
+                                </li>
+                                <li>
+                                    {{ form_start(delete_form) }}
+                                    <input type="submit" value="Delete">
+                                    {{ form_end(delete_form) }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

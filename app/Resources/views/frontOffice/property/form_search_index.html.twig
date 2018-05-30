@@ -1,0 +1,39 @@
+<form action="{{ path('front_property_search') }}" method="get">
+
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="form-group">
+            {{ form_row(form_search.category,{'attr': {'class': 'selectpicker search-fields'}}) }}
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="form-group">
+            {{ form_row(form_search.operation,{'attr': {'class': 'selectpicker search-fields'}}) }}
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="form-group">
+            {{ form_row(form_search.price,{'attr': {'class': 'search-fields'}}) }}
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="form-group">
+            {{ form_row(form_search.roomNumber,{'attr': {'class': 'search-fields'}}) }}
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="form-group">
+            {{ form_row(form_search.ville,{'attr': {'class': 'selectpicker search-fields'}}) }}
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="form-group">
+            {{ form_row(form_search.region,{'attr': {'class': 'selectpicker search-fields'}}) }}
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="form-group">
+            <label>&nbsp;</label>
+            <button class="search-button">Chercher</button>
+        </div>
+    </div>
+</form>

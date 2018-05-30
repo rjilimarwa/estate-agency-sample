@@ -1,0 +1,126 @@
+{% extends 'frontOffice/base.html.twig' %}
+
+{% block body %}
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <div class="breadcrumb-area">
+                    <div class="top">
+                        <h1>Contact Us</h1>
+                    </div>
+                    <ul class="breadcrumbs">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li class="active">Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-body">
+        <div class="container">
+            <!-- Main title -->
+            <div class="main-title">
+                <h1>Contact with us</h1>
+                <div class="border">
+                    <div class="border-inner"></div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue
+                    quis ut nunc. Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                    <!-- Contact form start -->
+                    <div class="contact-form">
+                        {% for message in app.flashes('notice') %}
+                            <div class="alert alert-success">
+                                <p>{{ message }}</p>
+                            </div>
+                        {% endfor %}
+
+                        <form id="contact_form" action="{{ path('app_fronOffice_contact') }}" method="POST">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        {{ form_row(form.fullName,{'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group enter-email">
+                                        {{ form_row(form.email,{'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group subject">
+                                        {{ form_row(form.subject,{'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group number">
+                                        {{ form_row(form.mobile,{'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+                                    <div class="form-group message">
+                                        {{ form_row(form.message,{'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                {{ form_rest(form) }}
+                                <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group send-btn">
+                                        <button type="submit" class="button-md button-theme btn-info">Envoyer Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Contact form end -->
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <!-- Contact details start -->
+                    <div class="contact-details">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Office Address</h4>
+                                <p>Lorem Ipsum is simply dummy text printing and type setting industry 5562. po alpu</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Phone Number</h4>
+                                <p>
+                                    <a href="tel:0477-0477-8556-552">office: 0477 8556 552</a>
+                                </p>
+                                <p>
+                                    <a href="tel:+55-417-634-7071">Mobile: +55 417 634 7071</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Email Address</h4>
+                                <p>
+                                    <a href="mailto:info@themevessel.com">info@themevessel.com</a>
+                                </p>
+                                <p>
+                                    <a href="www.example.html" target="_blank">www.example.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact details end -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

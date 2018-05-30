@@ -1,0 +1,41 @@
+{% extends "frontOffice/base.html.twig" %}
+
+
+
+
+{% block body %}
+    {% include "@FOSUser/Resetting/reset_content.html.twig" %}
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <div class="breadcrumb-area">
+                    <div class="top">
+                        <h1>Contact Us</h1>
+                    </div>
+                    <ul class="breadcrumbs">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li class="active">Inscription</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-body">
+        <div class="container">
+            <!-- Main title -->
+            <div class="main-title">
+                <h1>Inscription</h1>
+                <div class="border">
+                    <div class="border-inner"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4">
+
+                    {% include "@FOSUser/Resetting/reset_content.html.twig" %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

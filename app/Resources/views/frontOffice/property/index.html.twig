@@ -1,0 +1,167 @@
+{% extends 'frontOffice/base.html.twig' %}
+{% block body %}
+
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <div class="breadcrumb-area">
+                    <div class="top">
+                        <h1>Properties List Leftside</h1>
+                    </div>
+                    <ul class="breadcrumbs">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li class="active">Properties List Leftside</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="properties-section-body content-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-xs-12 col-md-push-4">
+                    <!-- Option bar start -->
+                    <div class="option-bar">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-5 col-sm-5 col-xs-2">
+                                <h4>
+                                <span class="heading-icon">
+                                    <i class="fa fa-th-list"></i>
+                                </span>
+                                    <span class="hidden-xs">Properties List</span>
+                                </h4>
+                            </div>
+                            <div class="col-lg-6 col-md-7 col-sm-7 col-xs-10 cod-pad">
+                               &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Option bar end -->
+
+                    {% for property in properties %}
+                        <div class="listing-properties-box wow fadeInUp delay-03s">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 listing-propertie-theme">
+                                <img src="{{ asset(property.image.webPath) }}" alt="properties-3"
+                                     class="img-responsive">
+                                <!-- Tag -->
+                                <span class="tag-f-left">
+                            <a href="#">
+                                <i class="button-sm button-theme"></i>{{ property.category.name }}
+                            </a>
+                        </span>
+                                <span class="tag-s-right">
+                            <a href="">{{ property.operation }}</a>
+                        </span>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 detail">
+                                <!-- Header -->
+                                <header class="clearfix">
+                                    <div class="pull-left">
+                                        <h1 class="title">
+                                            <a href="{{ path('front_property_show', {'slug': property.slug}) }}">{{ property.title }}</a>
+                                        </h1>
+                                        <h3 class="location">
+                                            <a href="#">
+                                                <i class="fa fa-map-marker"></i>{{ property.ville.name }}
+                                                ,{{ property.region.name }}
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <!-- Btn -->
+                                    <div class="pull-right">
+                                        <a href="{{ path('front_property_show', {'id': property.id}) }}"
+                                           class="button-sm button-theme">details</a>
+
+                                    </div>
+                                </header>
+                                <!-- Facilities list start -->
+                                <ul class="facilities-list clearfix">
+                                    <li class="bordered-right">
+                                        <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
+                                        <span>{{ property.area }}</span>
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-bed"></i>
+                                        <span>{{ property.roomNumber }} Chambres</span>
+                                    </li>
+                                    {#
+                                    <li>
+                                        <i class="flaticon-monitor"></i>
+                                        <span>1 TV Lounge</span>
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-holidays"></i>
+                                        <span>3 Bathroom </span>
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-vehicle"></i>
+                                        <span>1 Garage</span>
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-building"></i>
+                                        <span>3 Balcony</span>
+                                    </li>#}
+                                </ul>
+                                <!-- footer -->
+                                <div class="footer">
+                                    <a href="#">
+                                        Prix: {{ property.price }} DT
+                                    </a>
+                                    <span>
+                                <i class="fa fa-calendar-o"></i> {{ property.createdAt|date("d-m-Y") }}
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                    <!-- Listing properties end -->
+
+                    <!-- Page navigation start -->
+                    <nav aria-label="Page navigation">
+                        {{ knp_pagination_render(properties) }}
+                    </nav>
+
+
+                    <!-- Page navigation end-->
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 col-md-pull-8">
+                    <!-- Search contents sidebar start -->
+                    <div class="sidebar sidebar-widget">
+                        <h3 class="title">Chercher un bien</h3>
+                        {{ render(controller('AppBundle:FrontOffice/PropertyFront:formSearch')) }}
+                    </div>
+                    <!-- Search contents sidebar end -->
+
+                    <!-- Helping Center Start -->
+                    <div class="sidebar sidebar-widget helping-center">
+                        <h3 class="title">Helping Center</h3>
+                        <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.</p>
+                        <ul class="contact-link">
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+                                Aenean vulputate porttitor
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                <a href="tel:+55-417-634-7071">
+                                    +55 417 634 7071
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope-o"></i>
+                                <a href="mailto:info@themevessel.com">
+                                    info@themevessel.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Helping Center Start -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

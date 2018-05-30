@@ -1,0 +1,77 @@
+{% extends 'administration/base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Simple Tables
+                <small>preview of simple tables</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Tables</a></li>
+                <li class="active">Simple</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-4">
+                    <form action="{{ path('region_chercher') }}" method="get">
+                        <div class="form-group">
+                            <label>Nom regions</label>
+                            <input type="text" name="nom" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary"><span class="fa fa-loop"></span> Chercher
+                        </button>
+                    </form>
+                </div>
+                <div class="col-md-12">
+                    <div class="box">
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Liste des regions</h3>
+                            <div class="box-body">
+
+                                <a href="{{ path('region_new') }}" class="btn btn-success"><span
+                                            class="fa fa-plus"></span> Ajouter</a>
+
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>ville</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for region in regions %}
+                                        <tr>
+                                            <td>
+                                                <a href="{{ path('region_show', { 'id': region.id }) }}">{{ region.id }}</a>
+                                            </td>
+                                            <td>{{ region.name }}</td>
+                                            <td>{{ region.ville.name }}</td>
+                                            <td>
+                                                <a href="{{ path('region_show', { 'id': region.id }) }}">
+                                                    <span class="fa fa-eye text-primary"></span>
+                                                </a>&nbsp;&nbsp;
+
+                                                <a href="{{ path('region_edit', { 'id': region.id }) }}">
+                                                    <span class="fa fa-pencil text-success"></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

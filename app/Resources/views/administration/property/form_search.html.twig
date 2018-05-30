@@ -1,0 +1,38 @@
+{% extends 'administration/base.html.twig' %}
+<form action="{{ path('property_search') }}" method="get">
+    <div class="form-group">
+        {{ form_row(form_search.category,{'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form_search.operation,{'attr': {'class': 'form-control'}}) }}
+    </div>
+
+        <button class="search-button">Chercher</button>
+
+</form>
+<script>
+    //$('#') veut dire get element by Id
+    var $ville = $('#ville'); // c'est la liste déroulente ville (select)
+    // When sport gets selected ...
+    $ville.change(function() {
+        // ... retrieve the corresponding form.
+        var $form = $(this).closest('form'); //closest
+        // Simulate form data, but only include the selected ville value.
+        var data = {};
+        data[$ville.attr('name')] = $ville.val();
+        // Submit data via AJAX to the form's action path.
+        $.ajax({
+            url : $form.attr('action'), // valeur de l'attribut action : http://localhost/project1/web/app_dev.php/admin/property/new
+            type: $form.attr('method'), // valeur de l'attribut method: post
+            data : data,
+            success: function(html) {
+                // Replace current position field ...
+                $('#appbundle_property_region').replaceWith(
+                        // ... with the returned one from the AJAX response.
+                        $(html).find('#region')
+                );
+                // Position field now displays the appropriate positions.
+            }
+        });
+    });
+</script>

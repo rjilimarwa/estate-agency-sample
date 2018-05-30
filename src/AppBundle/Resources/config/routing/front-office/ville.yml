@@ -1,0 +1,4 @@
+front_ville_index:
+    path:     /liste-ville
+    defaults: { _controller: "AppBundle:FrontOffice/VilleFront:index" }
+    methods:  GET

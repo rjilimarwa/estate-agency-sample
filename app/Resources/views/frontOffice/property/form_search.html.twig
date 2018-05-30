@@ -1,0 +1,53 @@
+<form action="{{ path('front_property_search') }}" method="get">
+    <div class="form-group">
+        {{ form_row(form_search.category,{'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form_search.operation,{'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form_search.price,{'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form_search.roomNumber,{'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form_search.area,{'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form_search.ville,{'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form_search.region,{'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        <button class="search-button">Chercher</button>
+    </div>
+</form>
+<script>
+    //$('#') veut dire get element by Id
+    var $ville = $('#ville'); // c'est la liste déroulente ville (select)
+    // When sport gets selected ...
+    $ville.change(function () {
+        // ... retrieve the corresponding form.
+        var $form = $(this).closest('form'); //closest
+        // Simulate form data, but only include the selected ville value.
+        var data = {};
+        data[$ville.attr('name')] = $ville.val();
+        // Submit data via AJAX to the form's action path.
+        $.ajax({
+            url: "{{ path('front_property_form_search') }}", //
+            type: 'POST', // valeur de l'attribut method: post
+            data: data,
+            success: function (html) {
+                // Replace current position field ...
+                $('#region').replaceWith(
+                        // ... with the returned one from the AJAX response.
+                        $(html).find('#region')
+                );
+                // Position field now displays the appropriate positions.
+            }
+        });
+    });
+</script>

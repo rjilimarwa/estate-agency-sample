@@ -1,0 +1,36 @@
+property_index:
+    path:     /
+    defaults: { _controller: "AppBundle:BackOffice/Property:index" }
+    methods:  GET
+
+property_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:BackOffice/Property:show" }
+    methods:  GET
+
+property_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:BackOffice/Property:new" }
+    methods:  [GET, POST]
+
+property_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:BackOffice/Property:edit" }
+    methods:  [GET, POST]
+
+property_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:BackOffice/Property:delete" }
+
+property_for_rent:
+    path:     /a-louer
+    defaults: { _controller: "AppBundle:BackOffice/Property:forRent" }
+    methods:  GET
+
+property_for_sale:
+    path:     /a-vendre
+    defaults: { _controller: AppBundle:BackOffice/Property:forSale }
+property_search:
+    path:     /chercher
+    defaults: { _controller: "AppBundle:BackOffice/Property:search" }
+    methods:  GET

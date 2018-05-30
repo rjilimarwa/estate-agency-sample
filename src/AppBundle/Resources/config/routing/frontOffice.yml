@@ -1,0 +1,5 @@
+front_default:
+    resource: "@AppBundle/Resources/config/routing/front-office/default.yml"
+
+front_property:
+    resource: "@AppBundle/Resources/config/routing/front-office/property.yml"

@@ -1,0 +1,352 @@
+{% extends 'frontOffice/base.html.twig' %}
+
+{% block body %}
+    <div class="sub-banner">
+        <div class="overlay">
+            <div class="container">
+                <div class="breadcrumb-area">
+                    <div class="top">
+                        <h1>Properties Detail</h1>
+                    </div>
+                    <ul class="breadcrumbs">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li class="active">Properties Detail</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="properties-details-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="properties-details-section">
+                        <!-- Header -->
+                        <div class="heading-properties clearfix">
+                            <div class="pull-left">
+                                <h3>
+                                    {{ property.title }}
+                                </h3>
+                                <p>&nbsp;</p>
+
+                            </div>
+                            <div class="pull-right">
+                                <h3>Prix:{{ property.price }}</h3>
+
+                            </div>
+                        </div>
+
+
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                {% for photo in property.photos %}
+                                    <li data-target="#carousel-example-generic" data-slide-to="{{ loop.index }}"></li>
+                                {% endfor %}
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img src="{{ asset(property.image.webPath) }}" alt="" style="width: 800px; height: 400px;">
+                                </div>
+                                {% for photo in property.photos %}
+                                    <div class="item">
+                                        <img src="{{ asset(photo.webPath) }}" alt="" style="width: 800px; height: 400px;">
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                               data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button"
+                               data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+
+
+                        <!-- Properties detail slider end -->
+
+                        <!-- Specifications start -->
+                        <div class="sidebar specifications mrg-btm-30 clearfix">
+
+                            <!-- Reviews Box -->
+                            <div class="reviews-box clearfix">
+
+                                <div class="reviews">156 reviews</div>
+                                <a href="#" class="add-review">
+                                    <i class="fa fa-plus-circle"></i>Add to favorite
+                                </a>
+                            </div>
+
+                        </div>
+                        <!-- Specifications end -->
+
+                        <!-- Properties description start -->
+                        <div class="properties-description mrg-btm-40 ">
+                            <h3 class="heading">
+                                Description
+                            </h3>
+                            {{ property.description }}
+                        </div>
+                        <!-- Properties description end -->
+
+                        <!-- Properties condition start -->
+                        <div class="properties-condition mrg-btm-40 ">
+                            <h3 class="heading">
+                                Details bien
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <ul class="condition">
+                                        <li>
+                                            <span class="glyphicon glyphicon-th-large"></span>Surface:{{ property.surface }}
+                                        </li>
+
+                                        <li>
+                                            <i class="fa fa-bed" aria-hidden="true"></i> Cuisine: {{ property.cuisine }}
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed" aria-hidden="true"></i>
+                                            SalleManger: {{ property.SalleManger }}
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed" aria-hidden="true"></i>
+                                            lexterieur: {{ property.lexterieur }}
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed" aria-hidden="true"></i> Loisir: {{ property.loisirs }}
+
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed" aria-hidden="true"></i> Service: {{ property.service }}
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed" aria-hidden="true"></i>
+                                            AutreService: {{ property.autresServices }}
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bed" aria-hidden="true"></i>
+                                            attractionsTouristiques: {{ property.attractionsTouristiques }}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <ul class="condition">
+                                        <li>
+                                            <i class="fa fa-map"></i>Lieu: {{ property.ville.name }}
+                                        </li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-cloud-upload"></span>Region: {{ property.region.name }}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <ul class="condition">
+                                        <li>
+                                            <i class="flaticon-vehicle"></i>Categorie :{{ property.category.name }}
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-calendar-o"></i> Ajouté
+                                            le: {{ property.createdAt|date("d-m-Y") }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Properties condition end -->
+
+
+                    </div>
+
+                    <div class="properties-details-section">
+
+
+                        <!-- Contact form start -->
+                        <div class="contact-form">
+                            <h2 class="comments-title">Contact with us</h2>
+                            <form id="contact_form" action="http://real-house.sohelrana.me/index.html" method="POST"
+                                  enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group fullname">
+                                            <input type="text" name="full-name" class="input-text"
+                                                   placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group enter-email">
+                                            <input type="email" name="email" class="input-text"
+                                                   placeholder="Enter email">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group subject">
+                                            <input type="text" name="subject" class="input-text" placeholder="Subject">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group number">
+                                            <input type="text" name="phone" class="input-text"
+                                                   placeholder="Phone Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group message">
+                                            <textarea class="input-text" name="message"
+                                                      placeholder="Write message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="form-group send-btn mrg-btn-0">
+                                            <button type="submit" class="button-md button-theme">Send Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Contact form end -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="sidebar right">
+
+                        <!-- Featured property box start -->
+                        <h3 class="heading">
+                            Autres Biens
+                        </h3>
+                        {% for property in morePreperties %}
+                            <div class="thumbnail recent-properties-box">
+                                <img src=" {{ asset(property.image.webPath) }}" class="img-responsive"
+                                     style="height: 90px;">
+                                <!-- Detail -->
+                                <div class="caption detail">
+                                    <!-- Header -->
+                                    <header class="clearfix">
+                                        <div class="pull-left">
+                                            <h1 class="title">
+                                                <a href="{{ path('front_property_show', {'slug': property.slug}) }}">
+                                                    {{ property.operation }} {{ property.category.name }}
+                                                </a>
+                                            </h1>
+                                        </div>
+                                        <!-- Price -->
+                                        <div class="price">
+
+                                        </div>
+                                    </header>
+                                    <!-- Location -->
+                                    <h3 class="location">
+                                        <a href="#">
+                                            <i class="fa fa-map-marker"></i>{{ property.title }}
+                                        </a>
+                                    </h3>
+                                    <!-- Facilities List -->
+                                    <ul class="facilities-list clearfix">
+
+                                        <li>
+                                            <span>Lieu: </span>
+                                            <i class="flaticon-monitor"></i>{{ property.ville.name }}
+                                            , {{ property.region.name }}
+                                        </li>
+
+                                    </ul>
+                                    <!-- Footer -->
+                                    <div class="footer">
+                                        <a href="{{ path('front_property_show', {'slug': property.slug}) }}"
+                                           class="btn btn-primary" style="color: white">
+                                            Details
+                                        </a>
+                                        <span>
+                                       Prix: {{ property.price }} DT
+                                    </span>
+                                    </div>
+                                </div>
+                                <!-- Tag -->
+                                <span class="tag-f">
+                                <a href="{{ path('front_property_show', {'slug': property.slug}) }}">details</a>
+                            </span>
+                                <span class="tag-s">
+                                 <a href="{{ path('front_property_show', {'slug': property.slug}) }}"> {{ property.operation }}</a>
+                            </span>
+                            </div>
+                        {% endfor %}
+                        <!-- Featured property box end -->
+                        <div class="clearfix"></div>
+
+                        <div class="clearfix"></div>
+                        <!-- Helping center start -->
+                        <div class="sidebar sidebar-widget helping-center">
+                            <h3 class="title">Helping Center</h3>
+                            <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.</p>
+                            <ul class="contact-link">
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    Aenean vulputate porttitor
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <a href="tel:+55-417-634-7071">
+                                        +55 417 634 7071
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope-o"></i>
+                                    <a href="mailto:info@themevessel.com">
+                                        info@themevessel.com
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Helping center end -->
+
+                        <!-- Social media box start -->
+                        <div class="blog-share social-media-box sidebar-widget sidebar">
+                            <h3 class="title">Social Media</h3>
+                            <ul class="social-list">
+                                <li>
+                                    <a href="#" class="facebook-bg">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="twitter-bg">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="google-bg">
+                                        <i class="fa fa-google"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="linkedin-bg">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="pinterest-bg">
+                                        <i class="fa fa-pinterest"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Social media box end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

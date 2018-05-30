@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {% block stylesheets %}
+        {#<link href="{{ asset('frontend/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all"/>#}
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/css/animate.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/css/bootstrap-submenu.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/css/bootstrap-select.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/css/leaflet.css') }}">
+        <link rel="stylesheet"  type="text/css" href="{{ asset('frontOffice/css/map.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/fonts/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/fonts/flaticon/font/flaticon.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/fonts/linearicons/style.css') }}">
+        <link rel="stylesheet" type="text/css"  href="{{ asset('frontOffice/css/jquery.mCustomScrollbar.css') }}">
+        <link rel="stylesheet" type="text/css"  href="{{ asset('frontOffice/css/dropzone.css') }}">
+
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/css/skins/default.css') }}">
+
+        <!-- Favicon icon -->
+        <link rel="shortcut icon" href="{{ asset('frontOffice/img/favicon.ico') }}" type="image/x-icon" >
+
+        <!-- Google fonts -->
+        <link rel="stylesheet" type="text/css" href="../fonts.googleapis.com/cssb896.css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontOffice/css/ie10-viewport-bug-workaround.css') }}">
+
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script type="text/javascript" src="{{ asset('frontOffice/js/ie8-responsive-file-warning.js') }}"></script><![endif]-->
+        <script type="text/javascript" src="{{ asset('frontOffice/js/ie-emulation-modes-warning.js') }}"></script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="js/html5shiv.min.js"></script>
+        <script type="text/javascript" src="js/respond.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="{{ asset('frontOffice/js/jquery-2.2.0.min.js') }}"></script>
+
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+</head>
+<body>
+{#<div class="page_loader"></div>#}
+{{ include('frontOffice/includes/header.html.twig') }}
+
+{% block body %}{% endblock %}
+
+{{ include('frontOffice/includes/footer.html.twig') }}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('frontOffice/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/bootstrap-submenu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/rangeslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/jquery.mb.YTPlayer.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/wow.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/bootstrap-select.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/jquery.easing.1.3.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/jquery.scrollUp.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/leaflet.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/leaflet-providers.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/leaflet.markercluster.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/dropzone.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/ie10-viewport-bug-workaround.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontOffice/js/ie10-viewport-bug-workaround.js') }}"></script>
+
+
+{% endblock %}
+
+</body>
+</html>

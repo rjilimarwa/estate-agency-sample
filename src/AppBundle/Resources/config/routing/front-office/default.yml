@@ -1,0 +1,15 @@
+app_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:FrontOffice/FrontOfficeDefault:index }
+    # AppBundle: nom du bundle
+    # FrontOffice: nom du dossier ou se trouve le controlleur
+    # FrontOfficeDefault: nom du controllleur
+    # index: nom action
+
+app_fronOffice_contact:
+    path:     /contactez-nous
+    defaults: { _controller: AppBundle:FrontOffice/FrontOfficeDefault:contact }
+
+app_frontOffice_about:
+    path:     /a-propos
+    defaults: { _controller: AppBundle:FrontOffice/FrontOfficeDefault:about }

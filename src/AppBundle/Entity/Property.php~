@@ -1,0 +1,168 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo; // pour créer le slug
+
+/**
+ * Property
+ *
+ * @ORM\Table(name="property")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PropertyRepository")
+ */
+class Property
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", length=255, unique=true)
+     */
+    private $slug;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="area", type="integer")
+     */
+    private $area; //surface
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="roomNumber", type="integer")
+     */
+    private $roomNumber;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="living_room_number", type="integer", nullable=true)
+     */
+    private $livingRoomNumber;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="bath_room_number", type="integer", nullable=true)
+     */
+    private $bathRoomNumber;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="kitchen_number", type="integer", nullable=true)
+     */
+    private $kitchenNumber;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="garden", type="boolean")
+     */
+    private $garden;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="garage", type="boolean")
+     */
+    private $garage;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="parking", type="boolean")
+     */
+    private $parking;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activate", type="boolean")
+     */
+    private $activate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="operation", type="string")
+     */
+    private $operation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
+     */
+    private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Photo", cascade={"persist", "remove"}, mappedBy="property")
+     */
+    private $photos;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ville")
+     */
+    private $ville;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Region")
+     */
+    private $region;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category")
+     */
+    private $category;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+  }

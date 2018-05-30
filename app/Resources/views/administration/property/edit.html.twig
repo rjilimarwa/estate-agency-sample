@@ -1,0 +1,159 @@
+{% extends 'administration/base.html.twig' %}
+
+{% block body %}
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Simple Tables
+                <small>preview of simple tables</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Tables</a></li>
+                <li class="active">Simple</li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Ajouter bien</h3>
+                        </div>
+
+                        {{ form_start(form) }}
+                        <div class="box-body">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    {{ form_label(form.title) }}
+                                    {{ form_widget(form.title, {'attr': {'class': 'form-control'}} ) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.operation) }}
+                                    {{ form_widget(form.operation,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.category) }}
+                                    {{ form_widget(form.category,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.ville) }}
+                                    {{ form_widget(form.ville,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.region) }}
+                                    {{ form_widget(form.region,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.price) }}
+                                    {{ form_widget(form.price,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.description) }}
+                                    {{ form_widget(form.description,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.area) }}
+                                    {{ form_widget(form.area,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    {{ form_label(form.roomNumber) }}
+                                    {{ form_widget(form.roomNumber,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.livingRoomNumber) }}
+                                    {{ form_widget(form.livingRoomNumber,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.bathRoomNumber) }}
+                                    {{ form_widget(form.bathRoomNumber,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.kitchenNumber) }}
+                                    {{ form_widget(form.kitchenNumber,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_label(form.garage) }}
+                                    {{ form_widget(form.garage,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.parking) }}
+                                    {{ form_widget(form.parking,{'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.activate) }}
+                                    {{ form_widget(form.activate) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.image) }}
+                                    {{ form_widget(form.image,{'attr': {'class': ''}}) }}
+                                    <p>
+                                        <img src="{{ asset(property.image.webPath) }} " style="height: 100px;">
+                                    </p>
+                                </div>
+                                <br>
+                                <h3>Photos</h3>
+                                <div class="form-group">
+                                    <ul class="tags"
+                                        data-prototype="{{ form_widget(form.photos.vars.prototype)|e('html_attr') }}">
+                                        {# iterate over each existing tag and render its only field: name #}
+                                        {% for photo in form.photos %}
+                                            <li>
+                                                {{ form_widget(photo) }}
+                                                <p>
+                                                    <img src="{{ asset('uploads/photos/'~photo.vars.value.id~'.'~photo.vars.value.url) }}"
+                                                    style="height: 100px;">
+                                                </p>
+                                            </li>
+
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {{ form_rest(form) }}
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        {{ form_end(form) }}
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        //$('#') veut dire get element by Id
+        var $ville = $('#appbundle_property_ville'); // c'est la liste déroulente ville (select)
+        // When sport gets selected ...
+        $ville.change(function () {
+            // ... retrieve the corresponding form.
+            var $form = $(this).closest('form'); //closest
+            // Simulate form data, but only include the selected ville value.
+            var data = {};
+            data[$ville.attr('name')] = $ville.val();
+            // Submit data via AJAX to the form's action path.
+            $.ajax({
+                url: $form.attr('action'), // valeur de l'attribut action : http://localhost/project1/web/app_dev.php/admin/property/new
+                type: $form.attr('method'), // valeur de l'attribut method: post
+                data: data,
+                success: function (html) {
+                    // Replace current position field ...
+                    $('#appbundle_property_region').replaceWith(
+                            // ... with the returned one from the AJAX response.
+                            $(html).find('#appbundle_property_region')
+                    );
+                    // Position field now displays the appropriate positions.
+                }
+            });
+        });
+    </script>
+{% endblock %}

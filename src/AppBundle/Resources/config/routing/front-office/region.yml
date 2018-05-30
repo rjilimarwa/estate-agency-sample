@@ -1,0 +1,4 @@
+front_region_index:
+    path:     /liste-region
+    defaults: { _controller: "AppBundle:FrontOffice/RegionFront:index" }
+    methods:  GET

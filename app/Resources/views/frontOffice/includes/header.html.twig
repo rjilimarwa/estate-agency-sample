@@ -1,0 +1,95 @@
+<header class="top-header hidden-xs" id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="list-inline">
+                    <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>Need Support? 1-8X0-666-8X88</a>
+                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <ul class="top-social-media pull-right">
+                    <li class="login">
+                        <a href="#"><i class="fa fa-user"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-envelope-o"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                    </li>
+                    <li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <a href="{{ path('fos_user_profile_show') }}" class="sign-in">{{ app.user.username }}</a> |
+                            <a href="{{ path('fos_user_security_logout') }}" class="sign-in">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        {% else %}
+                            <i class="fa fa-key"></i>
+                            <a class="sign-in" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            &nbsp;/&nbsp;
+                            <a href="{{ path('fos_user_registration_register') }}" class="sign-in">Inscription</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<header class="main-header">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index-2.html" class="logo">
+                    <img src="img/logos/logo.png" alt="logo">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="{{ path('app_homepage') }}">Accueil</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{ path('front_property_for_sale') }}">A vendre</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{ path('front_property_for_rent') }}">A Louer</a>
+                    </li>
+                    {#<li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Properties<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="">
+                                <a tabindex="0">List Layout</a>
+                            </li>
+                        </ul>
+                    </li>#}
+                    <li class="dropdown">
+                        <a href="{{ path('app_frontOffice_about') }}">A propos</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{ path('app_fronOffice_contact') }}">Contactez nous</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- /.navbar-collapse -->
+            <!-- /.container -->
+        </nav>
+    </div>
+</header>

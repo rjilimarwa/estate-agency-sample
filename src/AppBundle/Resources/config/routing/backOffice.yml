@@ -1,0 +1,14 @@
+app_property:
+   resource: "@AppBundle/Resources/config/routing/back-office/property.yml"
+   prefix:   /admin/property
+
+app_ville:
+   resource: "@AppBundle/Resources/config/routing/back-office/ville.yml"
+   prefix:   /admin/ville
+
+app_ region:
+   resource: "@AppBundle/Resources/config/routing/back-office/region.yml"
+   prefix:   /admin/region
+app_ category:
+   resource: "@AppBundle/Resources/config/routing/back-office/category.yml"
+   prefix:   /admin/category

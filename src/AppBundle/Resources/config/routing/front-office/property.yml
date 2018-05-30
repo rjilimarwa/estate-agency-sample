@@ -1,0 +1,24 @@
+# ce fichier contient les routes de biens pour la partie frontOffice
+
+front_property_for_sale:
+    path:     /liste-biens/a-vendre
+    defaults: { _controller: "AppBundle:FrontOffice/PropertyFront:forSale" }
+    methods:  GET
+
+front_property_for_rent:
+    path:     /liste-biens/a-louer
+    defaults: { _controller: "AppBundle:FrontOffice/PropertyFront:forRent" }
+    methods:  GET
+
+front_property_show:
+    path:     /detail-biens/{slug}
+    defaults: { _controller: "AppBundle:FrontOffice/PropertyFront:show" }
+
+front_property_search:
+    path:     /chercher-biens
+    defaults: { _controller: "AppBundle:FrontOffice/PropertyFront:search" }
+    methods:  GET
+
+front_property_form_search:
+    path:     /display-form
+    defaults: { _controller: "AppBundle:FrontOffice/PropertyFront:formSearch" }
