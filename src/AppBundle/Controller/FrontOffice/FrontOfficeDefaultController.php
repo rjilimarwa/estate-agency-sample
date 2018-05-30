@@ -23,6 +23,10 @@ class FrontOfficeDefaultController extends Controller
         ));
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function formSearchAction(Request $request)
     {
         $property = new Property();
@@ -34,6 +38,10 @@ class FrontOfficeDefaultController extends Controller
         ));
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function contactAction(Request $request)
     {
         $entity = new Contact();
